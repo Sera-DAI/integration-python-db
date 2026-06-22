@@ -1,6 +1,8 @@
 import os
 from flask import Flask
 from app.database import db
+from app.routes import load_routes
+from app.models import User
 
 def create_app():
     app = Flask(__name__)
@@ -19,7 +21,8 @@ def create_app():
     db.init_app(app)
     
     with app.app_context():
-        from app import models
+        from app.models import User
         db.create_all()
         
+    load_routes(app)
     return app
