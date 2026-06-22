@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from app.database import db
+from app.extensions import db
 from app.routes import load_routes
 from app.models import User
 
