@@ -1,8 +1,6 @@
 import os
 from flask import Flask
-from app.extensions import db
-from app.routes import load_routes
-from app.models import User
+from app.extensions import db, login_manager
 
 def create_app():
     app = Flask(__name__)
@@ -19,10 +17,16 @@ def create_app():
     app.config['SECRET_KEY'] = "your_secret_key"
     
     db.init_app(app)
+    login_manager.init_app(app)
+    
+    from app.models import User
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
     
     with app.app_context():
-        from app.models import User
+        from app.routes import load_routes
+        load_routes(app)
         db.create_all()
         
-    load_routes(app)
     return app
