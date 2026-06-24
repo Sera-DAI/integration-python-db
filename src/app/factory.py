@@ -1,9 +1,23 @@
 import os
 from flask import Flask
+from flask.json.provider import DefaultJSONProvider
+from werkzeug.local import LocalProxy
+from dataclasses import is_dataclass, asdict
 from app.extensions import db, login_manager
+
+class CustomJSONProvider(DefaultJSONProvider):
+    def default(self, o):
+        if isinstance(o, LocalProxy):
+            o = o._get_current_object()
+            
+        if is_dataclass(o):
+            return asdict(o)
+        
+        return super().default(o)
 
 def create_app():
     app = Flask(__name__)
+    app.json = CustomJSONProvider(app)
     
     base_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     dba_dir = os.path.join(base_dir, 'instance_db')
