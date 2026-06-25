@@ -19,14 +19,12 @@ def create_app():
     app = Flask(__name__)
     app.json = CustomJSONProvider(app)
     
-    base_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    dba_dir = os.path.join(base_dir, 'instance_db')
-    
-    if not os.path.exists(dba_dir):
-        os.makedirs(dba_dir)
-        print(f"Diretório criado com sucesso em {dba_dir}")
+    db_user = os.getenv('MYSQL_USER')
+    db_password = os.getenv('MYSQL_PASSWORD')
+    db_host = os.getenv('DB_HOST')
+    db_name = os.getenv('MYSQL_DATABASE')
         
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(dba_dir, 'database.db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{db_user}:{db_password}@{db_host}/{db_name}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = "your_secret_key"
     

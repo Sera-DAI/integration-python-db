@@ -4,3 +4,5 @@ Flask-Cors
 Werkzeug
 pytest 
 flask-login
+mysql-connector-python
+python-dotenv
