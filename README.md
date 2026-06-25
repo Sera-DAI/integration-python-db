@@ -70,7 +70,7 @@ The application should now be integrated and accessible (usually via `http://loc
 
 All endpoints can be tested using **Postman**. If there is an exported Postman collection inside this repository, you can import it directly to test the data flow between Python and MySQL.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/52076750/2sBXwyF6aL)
 
 ## 🛑 Stopping the Application
 
