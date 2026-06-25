@@ -2,7 +2,6 @@ Flask
 Flask-SQLAlchemy
 Flask-Cors
 Werkzeug
-pytest 
 flask-login
 mysql-connector-python
 python-dotenv
