@@ -98,11 +98,11 @@ def load_routes(app):
         data = request.get_json()
         user = User.query.filter_by(id=data.get('id')).first()
         
-        if data.get('username') != current_user.username or data.get('username') is None:
+        if data.get('username') != current_user.username and data.get('username') is not "":
             return jsonify({
-                "Message": "Provided username doesn't match the current user."
+                "Message": "Provided username doesn't match the current user.",
             }), 401
-        elif not data.get('password') or not data.get('username') or not data.get('id'):
+        elif not data.get('password') or not data.get('username') and data.get('username') is "" or not data.get('id') :
             return jsonify({
                 "Message": "Current id, password and username is required."
             }), 400
