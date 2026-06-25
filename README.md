@@ -28,6 +28,15 @@ This project demonstrates a robust backend integration between a **Python** appl
 * **Database:** MySQL relational database storing structured application data.
 * **Infrastructure:** Docker and Docker Compose for seamless environment replication, networking, and dependency management.
 
+## 📦 Modules & Dependencies
+
+The Python application requires the following core modules to function properly. All of them are listed in the `requirements.txt` file:
+
+* **Flask** — Core microframework for routing and handling HTTP API requests.
+* **Flask-Cors** — Handles Cross-Origin Resource Sharing for frontend/API communication.
+* **PyMySQL / mysql-connector-python** — The database driver used by Python to connect and communicate with the MySQL container.
+* *(Optional)* **Flask-SQLAlchemy** — If using an ORM for database queries.
+
 ## 🛠️ Pre-requirements
 
 Before you begin, ensure you have the following installed on your machine:
@@ -65,6 +74,35 @@ Check if the containers are running successfully:
 docker ps
 ```
 The application should now be integrated and accessible (usually via `http://localhost:5000` or your defined port).
+
+### 5. Setup the Python Virtual Environment
+Create and activate an isolated environment for the application dependencies.
+
+**On Windows:**
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+**On Linux/macOS:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 6. Install Requirements
+With the virtual environment activated, install the required Python modules:
+```bash
+pip install -r requirements.txt
+```
+
+### 7. Run the Application
+Start the local Python development server:
+```bash
+python app.py
+```
+*(Or `flask run`, depending on your main file configuration).*
+The API should now be successfully connected to the Dockerized MySQL database!
 
 ## 🌐 API Endpoints & Testing
 
