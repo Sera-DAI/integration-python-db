@@ -98,7 +98,7 @@ def load_routes(app):
         data = request.get_json()
         user = User.query.filter_by(id=data.get('id')).first()
         
-        if data.get('username') != current_user.username and data.get('username') is None:
+        if data.get('username') != current_user.username or data.get('username') is None:
             return jsonify({
                 "Message": "Provided username doesn't match the current user."
             }), 401
@@ -106,9 +106,9 @@ def load_routes(app):
             return jsonify({
                 "Message": "Current id, password and username is required."
             }), 400
-        elif not user.check_password(data.get('password')):
+        elif not user.check_password(data.get('password')) or data.get('id') != current_user.id:
             return jsonify({
-                "Message": "Invalid Current password."
+                "Message": "Invalid password or id."
             }), 400
         
         db.session.delete(user)
