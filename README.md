@@ -32,10 +32,13 @@ This project demonstrates a robust backend integration between a **Python** appl
 
 The Python application requires the following core modules to function properly. All of them are listed in the `requirements.txt` file:
 
-* **Flask** — Core microframework for routing and handling HTTP API requests.
-* **Flask-Cors** — Handles Cross-Origin Resource Sharing for frontend/API communication.
-* **PyMySQL / mysql-connector-python** — The database driver used by Python to connect and communicate with the MySQL container.
-* *(Optional)* **Flask-SQLAlchemy** — If using an ORM for database queries.
+* **Flask:** Core microframework for routing and handling HTTP API requests.
+* **Flask-SQLAlchemy:** Database ORM (Object-Relational Mapper) to handle database queries and models efficiently.
+* **Flask-Cors:** Handles Cross-Origin Resource Sharing (CORS) to allow frontend applications to communicate with the API safely.
+* **Werkzeug:** A comprehensive WSGI web application library that underlies Flask.
+* **Flask-Login:** Provides comprehensive user session management, handling logins, logouts, and remembering users' sessions.
+* **mysql-connector-python:** The official database driver used by Python to connect and communicate with the MySQL container.
+* **python-dotenv:** Loads environment variables from a `.env` file to manage sensitive credentials (like database passwords) securely.
 
 ## 🛠️ Pre-requirements
 
