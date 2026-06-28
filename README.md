@@ -20,7 +20,7 @@
 ---
 ## 📝 About
 
-This project demonstrates a robust backend integration between a **Python** application and a **MySQL** database, fully containerized using **Docker**. The main goal is to provide a reliable, scalable, and easy-to-reproduce environment for API development and data persistence.
+This project demonstrates a backend integration between a **Python** application and a **MySQL** database, fully containerized using **Docker**. The main goal is to provide a reliable, scalable, and easy-to-reproduce environment for API development and data persistence.
 
 ## 🏛️ Architecture
 
